@@ -32,8 +32,7 @@ func (this *userMgr) GetAllOnlineUser() map[int]net.Conn {
 func (this *userMgr) GetSimpleUserById(userId int) (conn net.Conn, err error) {
 	conn, ok := this.OnliuneUser[userId]
 	if !ok {
-		fmt.Printf("用户 %d 不存在\n", userId)
-		err = fmt.Errorf("用户 %d 不存在\n", userId)
+		err = fmt.Errorf("用户 %d 不存在或已下线\n", userId)
 	}
 	return
 }

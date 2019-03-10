@@ -27,7 +27,6 @@ func (this *UserProcess) ServeLoginProcess(mess message.Message) (err error) {
 
 	var loginResMes = message.LoginResMes{}
 	if err != nil {
-		fmt.Println(err)
 		if err == model.ERROR_USER_NOTEXISTS {
 			loginResMes.ResMes.Code = 404
 			loginResMes.ResMes.Error = err.Error()
@@ -43,6 +42,12 @@ func (this *UserProcess) ServeLoginProcess(mess message.Message) (err error) {
 		loginResMes.ResMes.Code = 200
 		loginResMes.User = user
 		loginResMes.User.UserPwd = ""
+		//查看该用户是否已经登陆了
+		// old_conn, err := MyUserMgr.GetSimpleUserById(user.UserId)
+		// if err == nil {
+		// 	//如果没有报错，证明找到了，已经登陆
+		// 	old_conn.Close()
+		// }
 		//将用户信息保存
 		MyUserMgr.AddOnlineUser(user.UserId, this.Conn)
 		for id, _ := range MyUserMgr.GetAllOnlineUser() {

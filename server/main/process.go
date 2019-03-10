@@ -60,6 +60,8 @@ func (this *MainProcess) CategoryProcess(mess message.Message) (err error) {
 		return
 	case message.SmsMesType:
 		smsProcess.SendToAll(mess)
+	case message.SmsMesSimpleMesType:
+		smsProcess.SendMesToSimple(mess, this.Conn)
 	default:
 		fmt.Println("数据包类型不正确")
 		return

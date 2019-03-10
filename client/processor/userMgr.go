@@ -2,6 +2,7 @@ package processor
 
 import (
 	"fmt"
+	"go_code/chatroom1/client/model"
 	"go_code/chatroom1/common/message"
 )
 
@@ -9,6 +10,9 @@ var OnlineUser map[int]*message.User = make(map[int]*message.User, 1024)
 
 func initOnlineUser(loginResMes message.LoginResMes) {
 	for _, id := range loginResMes.Users {
+		if id == model.CurrentUser.User.UserId {
+			continue
+		}
 		addOnlineUser(id)
 	}
 }

@@ -1,14 +1,16 @@
 package message
 
 const (
-	LoginMesType       = "LoginMesType"
-	LoginResMesType    = "LoginResMesType"
-	RegisterMesType    = "RegisterMesType"
-	RegisterResMesType = "RegisterResMesType"
-	NotifyUserMesType  = "NotifyUserMesType"
-	NotifyUserMesUp    = "NotifyUserMesUp"
-	NotifyUserMesDown  = "NotifyUserMesDown"
-	SmsMesType         = "SmsMesType"
+	LoginMesType           = "LoginMesType"
+	LoginResMesType        = "LoginResMesType"
+	RegisterMesType        = "RegisterMesType"
+	RegisterResMesType     = "RegisterResMesType"
+	NotifyUserMesType      = "NotifyUserMesType"
+	NotifyUserMesUp        = "NotifyUserMesUp"
+	NotifyUserMesDown      = "NotifyUserMesDown"
+	SmsMesType             = "SmsMesType"
+	SmsMesSimpleMesType    = "SmsMesSimpleMesType"
+	SmsMesSimpleResMesType = "SmsMesSimpleResMesType"
 )
 
 type Message struct {
@@ -41,4 +43,11 @@ type NotifyUserMes struct {
 type SmsMes struct {
 	Content string `json:"content"`
 	User    User   `json:"user"`
+}
+type SmsMesSimpleMes struct {
+	SmsMes   SmsMes `json:"smsMes"`
+	ToUserId int    `json:"toUserId"`
+}
+type SmsMesSimpleResMes struct {
+	ResMes ResMes
 }
