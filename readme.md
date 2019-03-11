@@ -39,9 +39,9 @@
 然后编译
 
 ```
-go build -o "编译后的名称" "相对于GOPATH的路径"
+go build -o "编译后的名称" "相对于GOPATH的路径"
 //比如
-go build -o server.exe go_code/chatroom/server/main
+go build -o server.exe go_code/chatroom/server/main
 ```
 
 ## 使用
